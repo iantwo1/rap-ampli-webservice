@@ -22,17 +22,17 @@ public class ProductEndpoint {
 		this.productRepository = productRepository;
 	}
 
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProduct")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProductRequest")
 	@ResponsePayload
-    public GetProductResponse getProduct(@RequestPayload Integer id) {
+    public GetProductResponse getProductRequest(@RequestPayload Integer id) {
         GetProductResponse response = new GetProductResponse();
         response.setProduct(productRepository.find(id));
         return response;
     }
     
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllProducts")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProductsRequest")
 	@ResponsePayload
-	public GetProductsResponse getAllProducts() {
+	public GetProductsResponse getProductsRequest() {
 		GetProductsResponse response = new GetProductsResponse();
         response.setProducts(productRepository.findAll());
 		return response;
