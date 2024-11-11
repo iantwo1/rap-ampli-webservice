@@ -7,13 +7,13 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import br.com.ampli.rapWS.models.GetProductRequest;
+import br.com.ampli.rapWS.models.GetProductResponse;
 import br.com.ampli.rapWS.repository.ProductRepository;
-import br.com.ampli.rapWS.response.GetProductResponse;
-import br.com.ampli.rapWS.response.GetProductsResponse;
 
 @Endpoint
 public class ProductEndpoint {
-	private static final String NAMESPACE_URI = "http://ampli.com.br/rapWS";
+	private static final String NAMESPACE_URI = "http://localhost:8080/ws";
 
 	private ProductRepository productRepository;
 
@@ -22,19 +22,13 @@ public class ProductEndpoint {
 		this.productRepository = productRepository;
 	}
 
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProductRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetProductRequest")
 	@ResponsePayload
-    public GetProductResponse getProductRequest(@RequestPayload Integer id) {
+    public GetProductResponse getProduct(@RequestPayload GetProductRequest request) {
         GetProductResponse response = new GetProductResponse();
-        response.setProduct(productRepository.find(id));
+        response.setProduct(productRepository.find(request.getId()));
         return response;
     }
     
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProductsRequest")
-	@ResponsePayload
-	public GetProductsResponse getProductsRequest() {
-		GetProductsResponse response = new GetProductsResponse();
-        response.setProducts(productRepository.findAll());
-		return response;
-	}
+
 }

@@ -18,11 +18,12 @@ public class ProductRepository {
 	@PostConstruct
 	public void initData() {
 		Product tenisNike = new Product();
+		tenisNike.setId(1);
 		tenisNike.setName("Tênis Nike");
 		tenisNike.setPrice(200.0);
 		
 
-		products.put(1, tenisNike);
+		products.put(tenisNike.getId(), tenisNike);
 	}
 
 	public Product find(Integer id) {

@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("ProductsPort");
 		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://ampli.com.br/rapWS");
+		wsdl11Definition.setTargetNamespace("http://localhost:8080/ws");
 		wsdl11Definition.setSchema(productsSchema);
 		return wsdl11Definition;
 	}

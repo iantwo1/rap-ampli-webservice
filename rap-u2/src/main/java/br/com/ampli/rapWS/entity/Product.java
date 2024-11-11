@@ -1,17 +1,31 @@
 package br.com.ampli.rapWS.entity;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "product", propOrder = {
+    "id",
+    "name",
+    "price"
+})
 public class Product {
-    private Long id;
+    @XmlElement(required = true)
+    private Integer id;
+    @XmlElement(required = true)
     private String name;
+    @XmlElement(required = true)
     private Double price;
 
     // Getters and setters
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
